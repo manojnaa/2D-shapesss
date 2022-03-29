@@ -1,17 +1,19 @@
 //Global Variables
-int smallerDisplayDimesion;
+int smallerDisplayDimension, mouthOpen;
 float rectFaceX, rectFaceY, rectFaceWidth, rectFaceHeight;
 float faceX, faceY, faceDiameter;
-float leftEyeX, leftEyeY, rightEyeX, rightEyeY, eyeDiameter; 
+float leftEyeX, leftEyeY, rightEyeX, rightEyeY, eyeDiameter;
+float mouthX1, mouthY1, mouthX2, mouthY2;
+float xNose1, yNose1, xNose2, yNose2, xNose3, yNose3;
 //
-//Display Geomtery
-size(600, 400); //fullScreen(); displayWidth, displayHeight
+//Display Geometry
+fullScreen();
 //Landscape, not square or portrait
 println (width, height, displayWidth, displayHeight); //Verification of values
 //Display Orientation: a few comparisons for IFs
 //Computer Tells us the orientation, important for Cell Phone Orientation
 //if ( width >= height ) {println("Landscape or Square");} else {println("Portrait");}
-String orientation = ( width >= height ) ? "Landscape or Square": "Portrait"; //Ternary Operator, repeats IF-ELSE
+String orientation = ( width >= height) ? "Landscape or Square": "Portrait"; //Ternary Operator, repeats IF-ELSE
 println("Display Orientation:", orientation); //Verify variables
 if ( orientation=="Portrait" ) println("Turn your phun");
 /*
@@ -23,23 +25,30 @@ if ( orientation=="Landscape or Square" ) {
 */
 //
 //Variable Population
-smallerDisplayDimesion = height; //ALWAYS in Landscape
-rectFaceX = (width*1/2) - (smallerDisplayDimesion*1/2);
-rectFaceY = height*0;
-rectFaceWidth = smallerDisplayDimesion; //Square Shape
-rectFaceHeight = smallerDisplayDimesion; //Square Shape
-faceX = width*1/2;
-faceY = height*1/2;
-faceDiameter = smallerDisplayDimesion;
-leftEyeX = width*1.4/4;
-rightEyeX = width*2.6/4;
-leftEyeY = height*1/4;
+smallerDisplayDimension = displayHeight; //ALWAYS in Landscape
+rectFaceX = (displayWidth*1/2) - (smallerDisplayDimension*1/2);
+rectFaceY = displayHeight*0;
+rectFaceWidth = smallerDisplayDimension; //Square Shape
+rectFaceHeight = smallerDisplayDimension; //Square Shape
+faceX = displayWidth*1/2;
+faceY = displayHeight*1/2;
+faceDiameter = smallerDisplayDimension;
+leftEyeX = displayWidth*3/8;
+rightEyeX = displayWidth*5/8;
+leftEyeY = displayHeight*1/4;
 rightEyeY = leftEyeY; //Best Practice: change one line of code
-eyeDiameter = smallerDisplayDimesion*1/4;
+eyeDiameter = smallerDisplayDimension*1/4;
 mouthX1 = leftEyeX;
-mouthY1 = width*3/4;
+mouthY1 = displayHeight*3/4;
 mouthX2 = rightEyeX;
 mouthY2 = mouthY1;
+mouthOpen = smallerDisplayDimension*1/4;
+xNose1 = faceX;
+yNose1 = leftEyeY;
+xNose2 = faceX - leftEyeY*1/2;
+yNose2 = faceY;
+xNose3 = faceX + leftEyeY*1/2;
+yNose3 = faceY;
 //
 //Face: Circle = Inscribing a Circle in a Square
 //Center a circle on display orientation
@@ -56,10 +65,13 @@ ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
 //
 //Nose
 //rect();
+triangle(xNose1, yNose1, xNose2, yNose2, xNose3, yNose3);
 //
 //Mouth
 //rect();
+strokeWeight(mouthOpen); //testing: 100=400/4, mouthOpen=height*1/4
 line(mouthX1, mouthY1, mouthX2, mouthY2);
 //
 //Measle
 //rect();
+//ellipse(); //random values given other variables (similar to button code)
