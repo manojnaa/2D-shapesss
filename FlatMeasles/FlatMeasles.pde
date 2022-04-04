@@ -1,5 +1,5 @@
 //Global Variables
-int smallerDisplayDimension, mouthOpen;
+int reset, smallerDisplayDimension, mouthOpen;
 float rectFaceX, rectFaceY, rectFaceWidth, rectFaceHeight;
 float faceX, faceY, faceDiameter;
 float leftEyeX, leftEyeY, rightEyeX, rightEyeY, eyeDiameter;
@@ -26,6 +26,7 @@ if ( orientation=="Landscape or Square" ) {
 //
 //Variable Population
 smallerDisplayDimension = displayHeight; //ALWAYS in Landscape
+reset = smallerDisplayDimension / smallerDisplayDimension; //returns "1"
 rectFaceX = (displayWidth*1/2) - (smallerDisplayDimension*1/2);
 rectFaceY = displayHeight*0;
 rectFaceWidth = smallerDisplayDimension; //Square Shape
@@ -71,6 +72,7 @@ triangle(xNose1, yNose1, xNose2, yNose2, xNose3, yNose3);
 //rect();
 strokeWeight(mouthOpen); //testing: 100=400/4, mouthOpen=height*1/4
 line(mouthX1, mouthY1, mouthX2, mouthY2);
+strokeWeight(reset); //
 //
 //Measle
 //rect();
