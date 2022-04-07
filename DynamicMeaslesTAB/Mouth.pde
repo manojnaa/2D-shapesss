@@ -1,3 +1,7 @@
+//Global Variables
+int mouthOpen;
+float mouthX1, mouthY1, mouthX2, mouthY2;
+//
 void mouthDraw() {
   //Mouth
   int mouthWidth = int ( mouthX2 - mouthX1 ); //length=end-beginning
