@@ -11,7 +11,7 @@ void measleDraw() {
   measleY = random( rectFaceY+measleRadius, (( rectFaceY+rectFaceHeight ) - measleRadius ) );
   nightMode=false; //Note: IF-ELSE is similar to ternary operator
   measleColour = ( nightMode==false ) ? color( 255, random(0, 50), random(120) ) : color( 255, random(0, 50), 0 ) ; //ternary operator for day:night
-  whiteReset=#FFFFFF;
+  whiteReset=#A50C0E;
   //
   measleRectX = measleX-measleDiameter*1/2;
   measleRectY = measleY-measleDiameter*1/2;
